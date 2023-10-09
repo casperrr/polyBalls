@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const c = canvas.getContext("2d");
 
-const synth = new Tone.Synth().toDestination();
+const synth = new Tone.PolySynth(Tone.Synth).toDestination();
 
 canvas.width = 800;
 canvas.height = 400;
