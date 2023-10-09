@@ -1,6 +1,8 @@
 const canvas = document.getElementById("canvas");
 const c = canvas.getContext("2d");
 
+const synth = new Tone.Synth().toDestination();
+
 canvas.width = 800;
 canvas.height = 400;
 
@@ -16,12 +18,20 @@ let angleAmount = 0.05;
 //     [100,0,false],[200,0,false]
 // ];
 let balls = [];
+let notes = ["C","D","E","F","G","A","B"]
+let startOct = 5;
 
 
 function setup(){
     for(let i = 0; i < n; i++){
-        balls[i] = [ballRad(i),0,false];
+        let oct = Math.floor(i/notes.length)+2;
+        let note = i%notes.length;
+        let strNote = `${notes[note]}${oct}`;
+        // console.log(strNote);
+        balls[i] = [ballRad(i),0,true,strNote];
     }
+
+    Tone.start();
 
     c.fillStyle = '#181818';
     c.fillRect(0,0,canvas.width,canvas.height);
@@ -71,7 +81,7 @@ function increaseAngle(ball){
     let angleAmount = (Math.PI/speed)/ball[0];
     if(ball[1] < -Math.PI || ball[1] > 0){
         ball[2] = !ball[2];
-        playSound();
+        playSynth(ball[3]);
     }
 
     if(ball[2]){
@@ -120,6 +130,20 @@ function playSound(){
     audio.loop = false;
     audio.play();
 }
+
+function playSynth(note){
+    // let now = Tone.now();
+    // synth.triggerAttack("C4",now);
+    // synth.triggerRelease(now +1);
+    synth.triggerAttackRelease(note,"8n");
+}
+
+canvas.addEventListener("click",function(){
+    if(Tone.context.state != "running"){
+        Tone.start();
+    }
+    synth.triggerAttackRelease("C3","8n");
+});
 
 
 setup();
