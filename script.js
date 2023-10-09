@@ -7,6 +7,9 @@ canvas.width = 800;
 canvas.height = 400;
 
 // const audio = new Audio('/ding.mp3')
+/*
+Hey there if your reading this, I KNOW MY CODE IS A MESS LEAVE ME ALONE I MADE THIS FOR FUN. okay its fair my code is a mess and i cant be bothered to clean it up yet so ermm yeah not much u can do now!
+*/
 
 let n = 28;
 let r = 5;
@@ -21,7 +24,7 @@ let dir = false;
 let balls = [];
 let notesCMaj = ["C","D","E","F","G","A","B"]
 let notesCMaj7 = ["C","E","G","B"]
-let notes = notesCMaj7;
+let notes = notesCMaj;
 let startOct = 5;
 
 
@@ -112,8 +115,8 @@ function drawBall(x,y,i){
 }
 
 function bg(){
-    // c.fillStyle = '#181818';
-    c.fillStyle = '#1818183d';
+    c.fillStyle = '#181818';
+    // c.fillStyle = '#1818183d';
     c.fillRect(0,0,canvas.width,canvas.height);
 }
 
