@@ -96,10 +96,11 @@ function ballRad(i){
 
 
 function drawBall(x,y,i){
-    c.fillStyle = '#181818';
+    // c.fillStyle = '#181818';
     // c.strokeStyle = '#ffffff';
     let deg = 360/n * i;
     c.strokeStyle = 'hsla('+deg+',99%,43%,100%)';
+    c.fillStyle = 'hsla('+deg+',99%,43%,100%)';
     c.lineWidth = 2;
     c.save();
     c.translate(canvas.width/2, canvas.height - 20);
@@ -111,8 +112,8 @@ function drawBall(x,y,i){
 }
 
 function bg(){
-    c.fillStyle = '#181818';
-    // c.fillStyle = '#1818180d';
+    // c.fillStyle = '#181818';
+    c.fillStyle = '#1818183d';
     c.fillRect(0,0,canvas.width,canvas.height);
 }
 
